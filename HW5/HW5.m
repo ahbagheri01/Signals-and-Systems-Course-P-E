@@ -112,7 +112,7 @@ dom1 = [1,-1,0.5];
 H1 = (z-1)/(z^2 - z + 0.5)
 plot_z_plan(num1,dom1)
 num2 = [1,0];
-dom2 = [2,-1.7321,0.5];
+dom2 = [2, - sqrt(3),0.5];
 H2 = (z)/(z^2 - sqrt(3)*z + 0.5)
 plot_z_plan(num2,dom2)
 %% 
