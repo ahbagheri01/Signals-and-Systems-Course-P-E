@@ -62,7 +62,7 @@ G =(2*s+1)/(s^2 + 6*s + 7)
 step_res = ilaplace(G*(1/s))
 t = -1:0.001:10;
 y2 = subs(step_res,t) .* (t>=0);
-plot_fig(t,y2,"step response with a = 4")
+plot_fig(t,y2,"step response with a = 6")
 clear t
 syms t
 step_res =  sym(step_res)
@@ -92,12 +92,40 @@ t2 = 0:15;
 step_fig(t2,subs(x2,t2),"plot")
 H = ztrans(x2)
 plot_z_plan([5/4,0],[5/4,-1,0,0])
-x2 = 2^n* cos(0.4*pi*n) * heaviside(n);
-t2 = -2:8;
-step_fig(t2,subs(x2,t2),"plot")
+x3 = 2^n* cos(0.4*pi*n) * heaviside(n);
+t3 = -2:8;
+step_fig(t3,subs(x3,t3),"plot")
 H = ztrans(x2)
-plot_z_plan([5/4,0],[5/4,-1,0,0])
+plot_z_plan([1,-2*cos(0.4*pi)],[1,-4*cos(0.4*pi),4])
 %% 
+% part two
+% 
+% a
+
+syms z
+num1 = [1,-1];
+dom1 = [1,-1,0.5];
+H1 = (z-1)/(z^2 - z + 0.5)
+plot_z_plan(num1,dom1)
+num2 = [1,0];
+dom2 = [2,-1.7321,0.5];
+H2 = (z)/(z^2 - sqrt(3)*z + 0.5)
+plot_z_plan(num2,dom2)
+%% 
+% b
+
+[r1,p1,k1] = residuez(num1,dom1)
+[r2,p2,k2] = residuez(num2,dom2)
+%% 
+% c
+
+h1 = iztrans(H1)
+h2 = iztrans(H2)
+%% 
+% 
+% 
+% 
+% 
 % 
 % 
 %
